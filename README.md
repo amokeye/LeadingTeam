@@ -13,4 +13,4 @@ The current options for employee titles include manager, engineer, and intern. T
 A link to the video walkthrough for the project is included below. Enjoy!
 <br>
 <br> 
-[![Watch the video here!](https://drive.google.com/file/d/1RgKhNv-pWyhWv6AKhu5D7EyzjG2GJDiT)]
+[![Watch the video here!](https://drive.google.com/file/d/1RgKhNv-pWyhWv6AKhu5D7EyzjG2GJDiT/view)]
