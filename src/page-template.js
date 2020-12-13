@@ -1,55 +1,51 @@
-// let build = require("./lib");
-
-const fullTeam = ``;
-
 const generateHTML = function (fullTeam) {
 
-  // const teamCards = function (teamArray) {
+let string = ``;
 
-    if (fullTeam.Role === "Manager") {
-      return `<div class="card" style="width: 18rem;">
+for (let i = 0; i<fullTeam.length; i++) {
+
+    if (fullTeam[i].getRole() === "Manager") {
+      string+= `<div class="card" style="width: 18rem;">
       <div class="card-header p-4">
-        <h2>${name}</h2>
+        <h2>${fullTeam[i].name}</h2>
         <h4><i class="fas fa-mug-hot"></i> Manager<h4>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Email: <a href=mailto:${email}>${email}</a></li>
-        <li class="list-group-item">ID Number: ${IDname}</li>
-        <li class="list-group-item">Office Number: ${officeNumber}</li>
+        <li class="list-group-item">Email: <a href=mailto:${fullTeam[i].email}>${fullTeam[i].email}</a></li>
+        <li class="list-group-item">ID Number: ${fullTeam[i].id}</li>
+        <li class="list-group-item">Office Number: ${fullTeam[i].officeNumber}</li>
       </ul>
       </div>`
 
-    } else if (fullTeam.Role === "Engineer") {
-      return `<div class="card" style="width: 18rem;">
+    } else if (fullTeam[i].getRole() === "Engineer") {
+      string+= `<div class="card" style="width: 18rem;">
       <div class="card-header p-4">
-        <h2>${name}</h2>
+        <h2>${fullTeam[i].name}</h2>
         <h4><i class="fas fa-glasses"></i> Engineer<h4>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Email: <a href=mailto:${email}>${email}</a></li>
-        <li class="list-group-item">ID Number: ${IDname}</li>
-        <li class="list-group-item">Github: <a href="https://github.com/${Github}"> ${Github} </a>
+        <li class="list-group-item">Email: <a href=mailto:${fullTeam[i].email}>${fullTeam[i].email}</a></li>
+        <li class="list-group-item">ID Number: ${fullTeam[i].id}</li>
+        <li class="list-group-item">Github: <a href="https://github.com/${fullTeam[i].Github}"> ${fullTeam[i].Github} </a>
       </ul>
       </div>`
 
-    } else if (fullTeam.Role === "Intern") {
-      return `<div class="card" style="width: 18rem;">
+    } else if (fullTeam[i].getRole() === "Intern") {
+      string+= `<div class="card" style="width: 18rem;">
       <div class="card-header p-4">
-        <h2>${name}</h2>
+        <h2>${fullTeam[i].name}</h2>
         <h4><i class="fas fa-user-graduate"></i>   Intern<h4>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Email: <a href=mailto:"${email}>${email}</a></li>
-        <li class="list-group-item">ID Number: ${IDname}</li>
-        <li class="list-group-item">School: ${school}</li>
+        <li class="list-group-item">Email: <a href=mailto:"${fullTeam[i].email}>${fullTeam[i].email}</a></li>
+        <li class="list-group-item">ID Number: ${fullTeam[i].id}</li>
+        <li class="list-group-item">School: ${fullTeam[i].school}</li>
       </ul>
       </div>`
 
     }
     
-};
-
-module.exports = data => {
+}
 
 return `
    <!DOCTYPE html>
@@ -119,13 +115,16 @@ return `
      padding: 7%;
    }
     </style>
-    <div class="header"><h1>My Team</h1></div>
-     ${fullTeam}
+    <div class="header"><h1>2020 Leading Team</h1></div>
+     ${string}
    
      <div class="footer"></div>  
 </body>
 </html>`
 
-}
+};
 
-exports.generateHTML = generateHTML;
+
+
+
+module.exports = generateHTML;

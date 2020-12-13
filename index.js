@@ -1,7 +1,6 @@
 // Packages
 const fs = require('fs');
 const inquirer = require('inquirer');
-const path = require('path');
 
 // Paths for summary files and constructor function(s)
 const Engineer = require('./lib/Engineer');
@@ -10,11 +9,9 @@ const Manager = require('./lib/Manager');
 
 // Empty team array
 const team = [];
-//const fullTeam = ``;
 
-// Content
-const buildHTML = require('./src/page-template');
-let HTMLpage = buildHTML.generateHTML;
+// Team card content
+const generateHTML = require('./src/page-template');
 
 // Function for generating manager
 function generateManager() {
@@ -27,15 +24,15 @@ function generateManager() {
             },
 
             {
-                name: 'IDname',
-                type: 'input',
-                message: 'Please enter manager ID number.',
-            },
-
-            {
                 name: 'Email',
                 type: 'input',
                 message: 'Please enter manager email.',
+            },
+
+            {
+                name: 'IDname',
+                type: 'input',
+                message: 'Please enter manager ID number.',
             },
 
             {
@@ -47,11 +44,10 @@ function generateManager() {
     )
     
     .then(data => {
-        console.log(data);
-        const manager = new Manager(data.Name, data.IDname, data.Email, data.officeNumber);
+        const manager = new Manager(data.Name, data.Email, data.IDname, data.officeNumber);
         team.push(manager);
 
-        // Call next function
+        // Confirm if any additional employees are being added and publish them accordingly
         generateTeam();
     })
 }
@@ -90,15 +86,13 @@ function generateEngineer() {
     )
 
     .then(data => {
-        console.log(data);
         const engineer = new Engineer(data.Name, data.IDname, data.Email, data.Github);
         team.push(engineer);
 
-        // Call next function
+        // Confirm if any additional employees are being added and publish them accordingly
         generateTeam();
     })
 }
-
 
 
 // Function for generating Intern
@@ -132,11 +126,10 @@ function generateIntern() {
     )
     
     .then(data => {
-        console.log(data);
         const intern = new Intern(data.Name, data.IDname, data.Email, data.School);
         team.push(intern);
 
-        // Call next function
+        // Confirm if any additional employees are being added and publish them accordingly
         generateTeam();
     })
 }
@@ -171,19 +164,16 @@ function generateTeam() {
                 break;
             
             default: 
-                // Call buildHTML function to grab/order employee data
-                //const Summaries = generateHTML(fullTeam);
-                buildHTML(HTMLpage);
+                // Variable for generateHTML function that grab/order employee data as cards
+                const htmlString = generateHTML(team);
 
-                // function writeToFile(fileName, data) {
-                //     fs.writeFileSync(path.join(process.cwd(), fileName), data);
-                // }
-
-                // Write team data to HTML file
-                fs.writeFile('./output/index.html', HTMLpage, function (err) {
+                // Write team data to index.html file
+                fs.writeFile('./output/index.html', htmlString, function (err) {
                     if (err) throw err;
                 });
 
         }
+
+
     })
 };
