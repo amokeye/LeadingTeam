@@ -115,7 +115,7 @@ return `
      padding: 7%;
    }
     </style>
-    <div class="header"><h1>2020 Leading Team</h1></div>
+    <div class="header"><h1>2020 Leading Team Members</h1></div>
      ${string}
    
      <div class="footer"></div>  
