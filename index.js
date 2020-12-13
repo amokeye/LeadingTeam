@@ -40,8 +40,8 @@ function generateManager() {
                 type: 'input',
                 message: 'Please enter office number for manager.',
             },
-        ]
-    )
+        
+        ])
     
     .then(data => {
         const manager = new Manager(data.Name, data.Email, data.IDname, data.officeNumber);
@@ -126,7 +126,7 @@ function generateIntern() {
     )
     
     .then(data => {
-        const intern = new Intern(data.Name, data.IDname, data.Email, data.School);
+        const intern = new Intern(data.Name, data.Email, data.IDname, data.School);
         team.push(intern);
 
         // Confirm if any additional employees are being added and publish them accordingly
